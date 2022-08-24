@@ -1,6 +1,7 @@
 const AWS = require('aws-sdk');
 const dynamo = new AWS.DynamoDB.DocumentClient();
 const tableName = 'User';
+const apiToken = 'mtiToken';
 
 exports.handler = (event, context, callback) => {
   const response = {
@@ -20,11 +21,14 @@ exports.handler = (event, context, callback) => {
   const param = {
     TableName: tableName,
     //キー、インデックスによる検索の定義
-    KeyConditionExpression: '',
+    KeyConditionExpression: 'userId = :userId',
     //プライマリーキー以外の属性でのフィルタ
-    FilterExpression: '',
+    FilterExpression: 'password = :password',
     //検索値のプレースホルダの定義
-    ExpressionAttributeValues: {},
+    ExpressionAttributeValues: {
+      ':userId': userId,
+      ':password': password,
+    },
   };
 
   //dynamo.query()を用いてuserIdとpasswordが一致するデータの検索
@@ -41,7 +45,20 @@ exports.handler = (event, context, callback) => {
       return;
     }
     //TODO: 該当するデータが見つからない場合の処理を記述(ヒント：data.Itemsの中身が空)
+    if (!data.Items.length) {
+      response.body = JSON.stringify({
+        message: 'ユーザーIDもしくはパスワードが一致しません',
+      });
+      response.statusCode = 401;
+      callback(null, response);
+      return;
+    }
 
     //TODO: 認証が成功した場合のレスポンスボディとコールバックを記述
+    response.body = JSON.stringify({
+      token: apiToken,
+    });
+    callback(null, response);
+    return;
   });
 };
