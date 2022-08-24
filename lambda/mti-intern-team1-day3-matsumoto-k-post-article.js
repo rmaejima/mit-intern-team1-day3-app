@@ -26,7 +26,7 @@ exports.handler = (event, context, callback) => {
   };
   
   //「userId」,「text」が埋まっていれば、DBにデータを登録
-  if (!param.userId || !param.text ) {
+  if (!param.Item.userId || !param.Item.text ) {
     response.statusCode = 400;
     response.body = JSON.stringify({ message: "パラメータが足りません" });
     callback(null, response);
@@ -42,8 +42,8 @@ exports.handler = (event, context, callback) => {
       return;
     } else {
       response.body =JSON.stringify({
-        message: param
-      });
+        message: param.Item
+      })
       callback(null, response);
       return;
     }
