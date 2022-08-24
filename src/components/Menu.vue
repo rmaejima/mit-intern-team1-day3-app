@@ -1,6 +1,6 @@
 <template>
   <div class="ui secondary pointing green inverted massive menu">
-      <a class=item @click="switchPage('Home')" v-bind:class="{active: current=='Home'}" >Home</a>
+      <a class=item @click="switchPage('Articles')" v-bind:class="{active: current=='Articles'}" >Home</a>
       <a class=item @click="switchPage('User')" v-bind:class="{active: current=='User'}"  >Users</a>
       <a class=item @click="switchPage('Profile')" v-bind:class="{active: current=='Profile'}"  >Profile</a>
       <div class="right menu">

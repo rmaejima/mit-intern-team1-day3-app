@@ -9,18 +9,16 @@
                   <div class="field">
                       <textarea></textarea>
                   </div>
-                  
                   <div class="field">
-                      <div class="inline field">
-                          <div class="field">
-                              <label>カテゴリー</label>
-                              <input type="text" name="categoryName"/>
-                              <button type="submit">
-                              投稿
-                              </button>
-                          </div>
-                      </div>
+                    <label>カテゴリー名</label>
+                    <div class="ui left icon input">
+                      <i class="tag icon"></i>
+                      <input type="text" name="categoryName"/>
+                    </div>
                   </div>
+                  <button class="ui button fluid" type="submit">
+                    投稿
+                  </button>
               </form>
           </div>
       </div>
@@ -30,22 +28,28 @@
           <div class="ui large segment">
               <form class="ui form">
                   <div class="field">
-                    <label>ユーザ名</label>
-                    <input type="text" name="userName" required/>
+                    <label>ユーザー名</label>
+                    <div class="ui left icon input">
+                      <i class="user icon"></i>
+                      <input type="text" name="userName" required/>
+                    </div>
                   </div>
                   <div class="field">
                     <label>カテゴリー名</label>
-                    <input type="text" name="categoryName"/>
+                    <div class="ui left icon input">
+                      <i class="tag icon"></i>
+                      <input type="text" name="categoryName"/>
+                    </div>
                   </div>
-                  <div class="field flex">
+                  <div class="field">
                     <label>投稿日時</label>
                       <div class="ui input">
                         <input type="date" name="dateStart"/>から
                         <input type="date" name="dateEnd"/>まで
                       </div>
                   </div>
-                  <button class="ui button fluid green" type="submit">
-                      検索
+                  <button class="ui button green fluid" type="submit">
+                    検索
                   </button>
               </form>
           </div>
@@ -135,5 +139,4 @@ export default {
 </script>
 <style scoped>
 /* このコンポーネントだけに適用するCSSは */
-
 </style>
