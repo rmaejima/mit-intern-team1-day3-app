@@ -80,6 +80,7 @@
 // 必要なものはここでインポートする
 // @は/srcの同じ意味です
 // import something from '@/components/something.vue';
+// import axios from "axios";
 
 export default {
   name: 'Articles',
@@ -87,14 +88,48 @@ export default {
     // 読み込んだコンポーネント名をここに記述する
   },
   data() {
-    // Vue.jsで使う変数はここに記述する
-    return {};
+      // Vue.jsで使う変数はここに記述する
+      return {
+          post: {
+              text: null,
+              category: null,
+              err: null,
+          },
+          search: {
+              username: null,
+              category: null,
+              start: null,
+              end: null,
+              err: null,
+          },
+          query: {
+              start: null,
+              end: null,
+          },
+        //   articles: [],
+        //   iam: null,
+      };
   },
   computed: {
     // 計算した結果を変数として利用したいときはここに記述する
   },
   methods: {
     // Vue.jsで使う関数はここで記述する
+    getArticles() {
+        // const requestBody = {
+        //     userId: this.user.userId,
+        //     // text: text,
+        //     // category: categoryName
+        // };
+    },
+    postArticle() {
+    },
+    searchArticle() {
+    },
+    // deleteArticle(article) {
+    // },
+    // fromUnixtoDate(timestamp) {
+    // }
   },
 };
 </script>
