@@ -2,8 +2,7 @@
   <div>
     <div class="ui main container">
       <!-- 基本的なコンテンツはここに記載する -->
-      <div class="ui segment">
-      </div>
+      <div class="ui segment"></div>
     </div>
   </div>
 </template>
@@ -18,7 +17,7 @@
 export default {
   name: 'Home',
   components: {
-   // 読み込んだコンポーネント名をここに記述する
+    // 読み込んだコンポーネント名をここに記述する
   },
   data() {
     // Vue.jsで使う変数はここに記述する
@@ -26,7 +25,7 @@ export default {
       post: {
         text: null,
         category: null,
-        err: null
+        err: null,
       },
       search: {
         username: null,
@@ -37,14 +36,14 @@ export default {
       },
       query: {
         start: null,
-        end: null
+        end: null,
       },
       articles: [],
-      iam: null
+      iam: null,
     };
   },
   computed: {
-  // 計算した結果を変数として利用したいときはここに記述する
+    // 計算した結果を変数として利用したいときはここに記述する
     /*
     sortedArticles() {
     }
@@ -52,7 +51,7 @@ export default {
   },
   created() {
     // Vue.jsの読み込みが完了したときに実行する処理はここに記述する
-    this.iam = localStorage.getItem("userId");
+    this.iam = localStorage.getItem('userId');
     // apiからarticleを取得する
   },
   methods: {
@@ -69,8 +68,7 @@ export default {
     fromUnixtoDate(timestamp) {
     }
     */
-  }
-}
+  },
+};
 </script>
-<style scoped>
-</style>
+<style scoped></style>

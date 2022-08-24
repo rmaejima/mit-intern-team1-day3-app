@@ -1,15 +1,15 @@
-const AWS = require("aws-sdk");
+const AWS = require('aws-sdk');
 const dynamo = new AWS.DynamoDB.DocumentClient();
-const tableName = "User";
+const tableName = 'User';
 
 exports.handler = (event, context, callback) => {
   //レスポンスの雛形
   const response = {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Origin': '*',
     },
-    body: JSON.stringify({ message: "" }),
+    body: JSON.stringify({ message: '' }),
   };
 
   const userId = event.queryStringParameters.userId; //見たいユーザのuserId
@@ -23,8 +23,8 @@ exports.handler = (event, context, callback) => {
       console.log(err);
       response.statusCode = 500;
       response.body = JSON.stringify({
-        message: "予期せぬエラーが発生しました",
-        err: err
+        message: '予期せぬエラーが発生しました',
+        err: err,
       });
       callback(null, response);
       return;

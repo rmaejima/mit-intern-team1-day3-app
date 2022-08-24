@@ -1,9 +1,8 @@
 /* 全体で共通のCSSはこのファイルに記述する */
 body {
-  background-color: #DADADA;
+  background-color: #dadada;
 }
 
 input {
   height: 30px;
 }
-
