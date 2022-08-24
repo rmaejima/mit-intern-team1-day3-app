@@ -6,3 +6,11 @@ body {
 input {
   height: 30px;
 }
+
+.main.container {
+  margin-top: 30px;
+}
+
+.search-article {
+  margin-top: 30px;
+}
