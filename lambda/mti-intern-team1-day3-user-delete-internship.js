@@ -15,10 +15,15 @@ exports.handler = (event, context, callback) => {
   const userId = body.userId;
 
   //TODO: 削除対象のテーブル名と削除したいデータのkeyをparamに設定
-  const param = {};
+  const param = {
+    TableName: tableName,
+    Key: {
+      userId,
+    },
+  };
 
   //dynamo.delete()を用いてデータを削除
-  dynamo.delete(param, function (err, data) {
+  dynamo.delete(param, function (err) {
     if (err) {
       console.log(err);
       response.statusCode = 500;
@@ -30,6 +35,8 @@ exports.handler = (event, context, callback) => {
       return;
     } else {
       //TODO: 削除に成功した場合の処理を記述
+      response.body = JSON.stringify({ message: 'ユーザーを削除しました' });
+      callback(null, response);
     }
   });
 };

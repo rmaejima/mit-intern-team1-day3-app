@@ -12,7 +12,9 @@ exports.handler = (event, context, callback) => {
   };
 
   //TODO: 取得したいテーブル名をparamオブジェクトに設定する（中身を記述）
-  const param = {};
+  const param = {
+    TableName: tableName,
+  };
 
   //dynamo.scan()で全件取得
   dynamo.scan(param, function (err, data) {
@@ -28,7 +30,14 @@ exports.handler = (event, context, callback) => {
     }
 
     //TODO: 全ユーザのpasswordを隠蔽する処理を記述
+    const items = data.Items;
+    if (items) {
+      items.forEach((item) => delete item.password);
+    }
 
     //TODO: レスポンスボディの設定とコールバックの記述
+    response.body = JSON.stringify({ users: items });
+    callback(null, response);
+    return;
   });
 };

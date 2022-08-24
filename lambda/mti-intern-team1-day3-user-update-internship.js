@@ -14,9 +14,17 @@ exports.handler = (event, context, callback) => {
   const body = JSON.parse(event.body);
 
   //TODO: paramに更新対象のテーブル名と更新内容を記述
-  const param = {};
+  const param = {
+    TableName: tableName,
+    Item: {
+      userId: body.userId,
+      password: body.password,
+      nickname: body.nickname,
+      age: body.age,
+    },
+  };
 
-  dynamo.put(param, function (err, data) {
+  dynamo.put(param, function (err) {
     if (err) {
       console.log(err);
       response.statusCode = 500;
@@ -28,6 +36,11 @@ exports.handler = (event, context, callback) => {
       return;
     } else {
       //TODO: 更新に成功した場合の処理を記述
+      response.body = JSON.stringify({
+        message: 'ユーザ情報を更新しました',
+      });
+      callback(null, response);
+      return;
     }
   });
 };
